@@ -18,4 +18,4 @@ jobs:
           echo "ISSUE DESCRIPTION: ${{github.event.issues.body}}"
           
       - run: |
-          curk -X POST -H "Authorization: Token ${{secrets.BOT_TOKEN}}" -d '{"labels": ["New Issue"]}' ${{github.event.issue.url}}/labels
+          curl -X POST -H "Authorization: Token ${{secrets.BOT_TOKEN}}" -d '{"labels": ["New Issue"]}' ${{github.event.issue.url}}/labels
