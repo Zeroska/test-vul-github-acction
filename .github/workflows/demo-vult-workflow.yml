@@ -1,0 +1,21 @@
+name: Demo Vul
+
+on:
+  issues:
+    types: [opened]
+    
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  vuln_job:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          echo "ISSUE TITLE: ${{ github.event.issue.title}}"
+          echo "ISSUE DESCRIPTION: ${{github.event.issues.body}}"
+          
+      - run: |
+          curk -X POST -H "Authorization: Token ${{secrets.BOT_TOKEN}}" -d '{"labels": ["New Issue"]}' ${{github.event.issue.url}}/labels
