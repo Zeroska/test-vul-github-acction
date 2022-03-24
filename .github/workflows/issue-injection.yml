@@ -1,6 +1,8 @@
 name: Github Action Demo
 
-on: [push]
+on:
+  issues:
+    types: [opened]
 
 jobs: 
   print_issue_title:
